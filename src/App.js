@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import './App.css';
+import Plot from "./components/Plot"
 
 let baseUrl;
 if (process.env.NODE_ENV === 'development') {
@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   baseUrl = 'https://xpense-backend.herokuapp.com';
 }
-console.log('current base URL:', baseUrl);
+// console.log('current base URL:', baseUrl);
 
 function App() {
   const [plots, setPlots] = useState([])
@@ -28,9 +28,7 @@ function App() {
     <>
       <h1>Travis' Garden</h1>
       {plots.map((plot, index) => {
-        return (<article key={index}>
-          <h3>{plot.title}</h3>
-        </article>)
+        return <Plot plot={plot} key={index}/>
       })}
     </>
   );
