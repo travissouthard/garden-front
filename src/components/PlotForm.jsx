@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class PlotForm extends Component {
     render() {
         return (
-            <form /* onSubmit={(event) => props.handleSubmit(event)} */>
+            <form onSubmit={(event) => this.props.handleSubmit(event)}>
                 <label htmlFor="title">Title:
                     <input
                         type="text" 
