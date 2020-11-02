@@ -15,6 +15,8 @@ function App() {
   const [title, setTitle] = useState("")
   const [tags, setTags] = useState("")
   const [imageUrl, setImageUrl] = useState("")
+  const [postTitle, setPostTitle] = useState("")
+  const [description, setDescription] = useState("")
 
   let getGarden = () => {
     fetch(baseUrl + "/garden/").then(res => {
@@ -41,7 +43,16 @@ function App() {
     <>
       <h1>Travis' Garden</h1>
       {plots.map((plot, index) => {
-        return <Plot plot={plot} key={index}/>
+        return <Plot 
+          plot={plot}
+          key={index}
+          postTitle={postTitle}
+          description={description}
+          setPostTitle={setPostTitle}
+          setDescription={setDescription}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
       })}
       <PlotForm
         handleChange={handleChange}

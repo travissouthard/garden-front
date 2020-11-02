@@ -32,7 +32,7 @@ export default class PlotForm extends Component {
                         onChange={(event) => this.props.handleChange(event, this.props.setImageUrl)}
                     />
                 </label>
-                <input type="submit" value="Add Plot"/>
+                <input type="submit" value="Add plot"/>
             </form>
         )
     }

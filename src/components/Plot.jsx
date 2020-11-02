@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Post from "./Post"
+import PostForm from "./PostForm"
 
 export default class Plot extends Component {
     render() {
@@ -11,6 +12,12 @@ export default class Plot extends Component {
                 })}
                 <p>Last Updated: {this.props.plot.updatedAt}</p>
                 <p>Tags: {this.props.plot.tags}</p>
+                <PostForm 
+                    handleChange={this.props.handleChange}
+                    handleSubmit={this.props.handleSubmit}
+                    setPostTitle={this.props.setPostTitle}
+                    setDescription={this.props.setDescription}
+                />
             </article>
         )
     }
