@@ -8,7 +8,6 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   baseUrl = 'https://xpense-backend.herokuapp.com';
 }
-// console.log('current base URL:', baseUrl);
 
 function App() {
   const [plots, setPlots] = useState([])
