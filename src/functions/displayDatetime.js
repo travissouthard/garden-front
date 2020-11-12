@@ -1,4 +1,4 @@
-displayDatetime = (datetime) => {
+let displayDatetime = (datetime) => {
     let date = datetime.slice(0, 10)
     let time = datetime.slice(11, 19)
     let dateArray = date.split("-")
@@ -19,4 +19,4 @@ displayDatetime = (datetime) => {
     return readableDate + ", " + timeArray.join("")
 }
 
-export {displayDatetime}
+export {displayDatetime as default}
