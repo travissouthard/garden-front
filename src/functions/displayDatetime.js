@@ -5,7 +5,7 @@ let displayDatetime = (datetime) => {
     let timeArray = time.split(":")
 
     let readableDate = dateArray[1] + "/" + dateArray[2] + "/" + dateArray[0]
-    if (timeArray[0] == "00") {
+    if (timeArray[0] === "00") {
         timeArray[0] = "12"
         timeArray[2] = "AM"
     } else if (parseInt(timeArray[0]) > 12) {
