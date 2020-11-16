@@ -29,10 +29,10 @@ function App() {
     callback(event.target.value)
   }
 
-  let handleSubmit = (event) => {
-    event.preventDefault()
-    console.log("Form submitted!")
-  }
+  // let handleSubmit = (event) => {
+  //   event.preventDefault()
+  //   console.log("Form submitted!")
+  // }
 
   let handleNewPlot = (event) => {
     event.preventDefault()
@@ -52,7 +52,32 @@ function App() {
         const copyPlots = [...plots]
         copyPlots.push(newPlot)
         setPlots(copyPlots)
+        setTitle("")
+        setTags("")
+        setImageUrl("")
       })
+  }
+
+  let handleNewPost = (event, plotName) => {
+    event.preventDefault()
+    fetch(baseUrl + "/garden/post/" + plotName + "/", {
+      method: "PUT",
+      body: JSON.stringify({
+        title: postTitle,
+        description: description
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    }).then(res => res.json(
+      )).then(updatedPlot => {
+        const copyPlots = [...plots]
+        let index = plots.findIndex(plot => plots.title === plotName)
+        copyPlots[index] = updatedPlot
+        setPlots(copyPlots)
+        setPostTitle("")
+        setDescription("")
+      }).catch(error => console.error({"Error": error}))
   }
 
   useEffect(() => {
@@ -71,7 +96,7 @@ function App() {
           setPostTitle={setPostTitle}
           setDescription={setDescription}
           handleChange={handleChange}
-          handleSubmit={handleSubmit}
+          handleSubmit={handleNewPost}
         />
       })}
       <PlotForm

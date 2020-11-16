@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class PostForm extends Component {
     render() {
         return (
-            <form onSubmit={(event) => this.props.handleSubmit(event)}>
+            <form onSubmit={(event) => this.props.handleSubmit(event, this.props.title)}>
                 <fieldset>
                     <legend>{this.props.title}</legend>
                     <label htmlFor="postTitle">Title:
