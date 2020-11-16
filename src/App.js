@@ -34,6 +34,27 @@ function App() {
     console.log("Form submitted!")
   }
 
+  let handleNewPlot = (event) => {
+    event.preventDefault()
+    fetch(baseUrl + "/garden/", {
+      method: "POST",
+      body: JSON.stringify({
+        title: title,
+        posts: [],
+        tags: tags,
+        imageUrl: imageUrl,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    }).then(res => res.json(
+      )).then(newPlot => {
+        const copyPlots = [...plots]
+        copyPlots.push(newPlot)
+        setPlots(copyPlots)
+      })
+  }
+
   useEffect(() => {
     getGarden()
   })
@@ -55,7 +76,7 @@ function App() {
       })}
       <PlotForm
         handleChange={handleChange}
-        handleSubmit={handleSubmit}
+        handleSubmit={handleNewPlot}
         title={title}
         tags={tags}
         imageUrl={imageUrl}
